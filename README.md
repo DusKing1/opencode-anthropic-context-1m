@@ -20,11 +20,23 @@ Without this plugin, the Anthropic API enforces a **200K input token limit**. Th
 
 Add to your `opencode.json`:
 
-```json
+```jsonc
 {
-  "plugin": ["opencode-anthropic-context-1m"]
+  "plugin": ["opencode-anthropic-context-1m"],
+  "provider": {
+    "anthropic": {
+      "models": {
+        "claude-opus-4-6":          { "limit": { "context": 1000000 } },
+        "claude-sonnet-4-6":        { "limit": { "context": 1000000 } },
+        "claude-sonnet-4-5":        { "limit": { "context": 1000000 } },
+        "claude-sonnet-4-20250514": { "limit": { "context": 1000000 } }
+      }
+    }
+  }
 }
 ```
+
+The `plugin` entry enables the 1M beta header. The `provider.anthropic.models` entries override the default 200K context limit so that OpenCode's auto-compaction triggers at ~968K instead of ~168K.
 
 ## How It Works
 
