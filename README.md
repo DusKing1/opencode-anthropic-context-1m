@@ -26,10 +26,10 @@ Add to your `opencode.json`:
   "provider": {
     "anthropic": {
       "models": {
-        "claude-opus-4-6":          { "limit": { "context": 1000000 } },
-        "claude-sonnet-4-6":        { "limit": { "context": 1000000 } },
-        "claude-sonnet-4-5":        { "limit": { "context": 1000000 } },
-        "claude-sonnet-4-20250514": { "limit": { "context": 1000000 } }
+        "claude-opus-4-6":          { "limit": { "context": 1000000, "output": 128000 } },
+        "claude-sonnet-4-6":        { "limit": { "context": 1000000, "output": 64000 } },
+        "claude-sonnet-4-5":        { "limit": { "context": 1000000, "output": 64000 } },
+        "claude-sonnet-4-20250514": { "limit": { "context": 1000000, "output": 64000 } }
       }
     }
   }
