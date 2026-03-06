@@ -1,0 +1,41 @@
+{
+  "name": "opencode-anthropic-context-1m",
+  "version": "1.0.0",
+  "description": "OpenCode plugin: enables 1M context window for supported Anthropic Claude models via the anthropic-beta header",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "license": "MIT",
+  "author": "DusKing1",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DusKing1/opencode-anthropic-context-1m.git"
+  },
+  "homepage": "https://github.com/DusKing1/opencode-anthropic-context-1m#readme",
+  "bugs": {
+    "url": "https://github.com/DusKing1/opencode-anthropic-context-1m/issues"
+  },
+  "keywords": [
+    "opencode",
+    "anthropic",
+    "claude",
+    "context-1m",
+    "1m-context",
+    "plugin"
+  ],
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "prepublishOnly": "tsc"
+  },
+  "peerDependencies": {
+    "@opencode-ai/plugin": ">=1.0.0"
+  },
+  "devDependencies": {
+    "@opencode-ai/plugin": "^1.2.15",
+    "@opencode-ai/sdk": "^1.2.15",
+    "typescript": "^5.9.0"
+  }
+}
