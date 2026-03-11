@@ -19,6 +19,7 @@ function supported(id: string): boolean {
 }
 
 export const plugin: Plugin = async () => ({
+  // Anthropic direct API — append beta flag to the anthropic-beta HTTP header.
   "chat.headers": async (input, output) => {
     if (input.model.providerID !== "anthropic") return;
     if (!supported(input.model.api.id)) return;
@@ -37,6 +38,19 @@ export const plugin: Plugin = async () => ({
 
     if (existing.includes(BETA)) return;
     output.headers["anthropic-beta"] = existing ? `${existing},${BETA}` : BETA;
+  },
+
+  // Amazon Bedrock — inject beta flag via options.anthropicBeta.
+  // The @ai-sdk/amazon-bedrock SDK translates this into
+  // additionalModelRequestFields.anthropic_beta in the Converse API body.
+  "chat.params": async (input, output) => {
+    if (input.model.providerID !== "amazon-bedrock") return;
+    if (!supported(input.model.api.id)) return;
+
+    const existing: string[] =
+      (output.options.anthropicBeta as string[]) ?? [];
+    if (existing.includes(BETA)) return;
+    output.options.anthropicBeta = [...existing, BETA];
   },
 });
 
