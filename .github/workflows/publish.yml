@@ -21,3 +21,5 @@ jobs:
       - run: npm install
       - run: npm run build
       - run: npm publish --provenance --access public --tag ${{ contains(github.ref_name, '-') && 'dev' || 'latest' }}
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
